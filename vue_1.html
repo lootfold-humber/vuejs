@@ -1,17 +1,21 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Intro to v-bind</title>
-		<meta charset="UTF-8">
-		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-		<style>
-			.container{background:#cecece;}
-		</style>
-	</head>
-	<body>
-	
-	<div id="app">
-		<!--
+  <head>
+    <title>Intro to v-bind</title>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+      .container {
+        background: #cecece;
+      }
+      .highlight {
+        border: 2px solid yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!--
 		//step 1: open console
 		//step 2: inspect "look at me!" HTML
 		//step 3: notice how the class is set for the span to "container"
@@ -38,25 +42,27 @@
 			1. Create an image and set the following attributes with Vue {src, alt, title}
 			2. Augment the span below to include another class called "highlight", which has a yellow border.
 		-->
-		<span v-bind:class="loadClass">
-			look at me!
-		</span>
-	</div>
-	
-	<script>
-	var app = new Vue({
-		//Bind Vue object to HTML element through query selector
-		el: '#app',
-		data:{
-			loadClass : 'container',
-			//newStyle : 'font-size:30px;',
-			//newAlt : 'dynamically set alt!'
-			
-		}
-	});
-	
-	
-	
-	</script>
-	</body>
+      <span v-bind:class="loadClass"> look at me! </span>
+      <div>
+        <img v-bind:src="img.src" v-bind:alt="img.alt" />
+      </div>
+    </div>
+
+    <script>
+      var app = new Vue({
+        //Bind Vue object to HTML element through query selector
+        el: "#app",
+        data: {
+          loadClass: "container highlight",
+          //newStyle : 'font-size:30px;',
+          //newAlt : 'dynamically set alt!'
+          title: "Exercise 2",
+          img: {
+            src: "https://picsum.photos/id/237/200/300",
+            alt: "a dog",
+          },
+        },
+      });
+    </script>
+  </body>
 </html>

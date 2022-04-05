@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>J1 Problem</title>
+  </head>
+  <body>
+    <a
+      href="https://cemc.uwaterloo.ca/contests/computing/2022/ccc/juniorEF.pdf"
+      target="_blank"
+      >Link to my J1 problem statement</a
+    >
+
+    <main id="app" style="margin-top: 20px">
+      <div>
+        <label for="regularBox">No of regular boxes: </label>
+        <input
+          type="number"
+          name="regularBox"
+          id="regularBox"
+          max="8"
+          v-model="noRegularBox"
+        />
+      </div>
+      <div>
+        <label for="smallBox">No of small boxes: </label>
+        <input
+          type="number"
+          name="smallBox"
+          id="smallBox"
+          max="3"
+          v-model="noSmallBox"
+        />
+      </div>
+      <button v-on:click="showHide()">{{buttonText}}</button>
+      <p v-if="show">Total Cup Cakes: {{totalCupCakes}}</p>
+      <p v-if="show">Cup Cakes Left: {{cupCakesLeft}}</p>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          noRegularBox: 0,
+          noSmallBox: 0,
+          regBoxCapacity: 8,
+          smallBoxCapacity: 3,
+          totalStudents: 28,
+          show: false,
+          buttonText: "Show",
+        },
+        computed: {
+          totalCupCakes: function () {
+            return (
+              this.noRegularBox * this.regBoxCapacity +
+              this.noSmallBox * this.smallBoxCapacity
+            );
+          },
+          cupCakesLeft: function () {
+            return this.totalCupCakes - 28;
+          },
+        },
+        methods: {
+          showHide: function () {
+            this.show = !this.show;
+            this.buttonText = this.buttonText === "Show" ? "Hide" : "Show";
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
